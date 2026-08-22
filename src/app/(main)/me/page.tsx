@@ -2,8 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 import { getMyAnswers } from "@/lib/data";
 import { getViewerId, PREVIEW_MODE, DEMO_USER_ID } from "@/lib/session";
 import { GENDER_LABEL, type Gender } from "@/lib/types";
-import { relativeTime } from "@/lib/format";
 import { signOut } from "@/app/actions";
+import MyAnswerCard from "@/components/MyAnswerCard";
 
 export const dynamic = "force-dynamic";
 
@@ -49,25 +49,7 @@ export default async function MePage() {
       ) : (
         <div className="space-y-4">
           {answers.map((a) => (
-            <article key={a.id} className="card p-5">
-              <p className="meta mb-2 flex items-center gap-2">
-                <span className="rounded-full border border-line px-2 py-0.5">
-                  {a.question_category}
-                </span>
-                <span className="ml-auto">{relativeTime(a.created_at)}</span>
-              </p>
-              <p className="font-voice text-lg leading-relaxed text-ink">
-                {a.question_text}
-              </p>
-              <p className="mt-2 whitespace-pre-wrap font-body text-[15px] leading-relaxed text-ink-soft">
-                {a.content}
-              </p>
-              {a.has_empathy && (
-                <p className="mt-3 border-t border-line pt-3 text-xs text-sage">
-                  ♥ 누군가 이 답변에 공감했어요
-                </p>
-              )}
-            </article>
+            <MyAnswerCard key={a.id} answer={a} />
           ))}
         </div>
       )}

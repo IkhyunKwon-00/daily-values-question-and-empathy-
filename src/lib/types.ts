@@ -37,3 +37,40 @@ export type FeedAnswer = Answer & {
   liked_by_me: boolean;
   is_mine: boolean;
 };
+
+/** A Q&A card for the explore feed: an answer shown together with its question. */
+export type ExploreCard = {
+  id: string;
+  user_id: string;
+  content: string;
+  created_at: string;
+  question_text: string;
+  question_category: string;
+  author_gender: Gender | null;
+  liked_by_me: boolean;
+};
+
+/** An author the viewer has liked, with how many of their answers the viewer liked. */
+export type LikedAuthor = {
+  user_id: string;
+  gender: Gender | null;
+  like_count: number;
+  last_liked_at: string;
+};
+
+/** One 1:1 conversation summary (latest message with the partner). */
+export type Conversation = {
+  partner_id: string;
+  partner_gender: Gender | null;
+  last_body: string;
+  last_at: string;
+  unread: boolean;
+};
+
+/** A single message inside a thread, from the viewer's perspective. */
+export type Message = {
+  id: string;
+  body: string;
+  created_at: string;
+  mine: boolean;
+};

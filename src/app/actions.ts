@@ -118,3 +118,72 @@ export async function signOut() {
   await supabase.auth.signOut();
   redirect("/login");
 }
+
+export async function editAnswer(
+  answerId: string,
+  content: string
+): Promise<ActionResult> {
+  const trimmed = content.trim();
+  if (trimmed.length < ANSWER_MIN_LENGTH) {
+    return { ok: false, error: `최소 ${ANSWER_MIN_LENGTH}자 이상 작성해 주세요.` };
+  }
+  if (trimmed.length > ANSWER_MAX_LENGTH) {
+    return { ok: false, error: `최대 ${ANSWER_MAX_LENGTH}자까지 작성할 수 있어요.` };
+  }
+
+  if (PREVIEW_MODE) return { ok: true };
+
+  const { supabase, user } = await requireUser();
+  const { error } = await supabase
+    .from("answers")
+    .update({ content: trimmed })
+    .eq("id", answerId)
+    .eq("user_id", user.id);
+
+  if (error) return { ok: false, error: "답변을 수정하지 못했어요." };
+
+  revalidatePath("/");
+  revalidatePath("/feed");
+  revalidatePath("/me");
+  return { ok: true };
+}
+
+export async function sendMessage(
+  toUserId: string,
+  body: string
+): Promise<ActionResult> {
+  const trimmed = body.trim();
+  if (trimmed.length < 1) return { ok: false, error: "메시지를 입력해 주세요." };
+  if (trimmed.length > 1000) {
+    return { ok: false, error: "메시지가 너무 길어요." };
+  }
+
+  if (PREVIEW_MODE) return { ok: true };
+
+  const { supabase, user } = await requireUser();
+  if (user.id === toUserId) {
+    return { ok: false, error: "나에게는 보낼 수 없어요." };
+  }
+
+  const { error } = await supabase.from("messages").insert({
+    from_user_id: user.id,
+    to_user_id: toUserId,
+    body: trimmed,
+  });
+  if (error) return { ok: false, error: "메시지를 보내지 못했어요." };
+
+  revalidatePath("/messages");
+  revalidatePath(`/messages/${toUserId}`);
+  return { ok: true };
+}
+
+export async function markConversationRead(partnerId: string): Promise<void> {
+  if (PREVIEW_MODE) return;
+  const { supabase, user } = await requireUser();
+  await supabase
+    .from("messages")
+    .update({ read_at: new Date().toISOString() })
+    .eq("to_user_id", user.id)
+    .eq("from_user_id", partnerId)
+    .is("read_at", null);
+}

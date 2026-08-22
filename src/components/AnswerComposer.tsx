@@ -31,18 +31,17 @@ export default function AnswerComposer({ questionId }: { questionId: string }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="card mt-4 p-5">
+    <form onSubmit={onSubmit} className="card mt-4 rounded-xl3 p-6">
+      <p className="meta mb-2 text-sage">나에게 쓰듯이, 오늘의 생각</p>
       <textarea
         value={value}
         onChange={(e) => setValue(e.target.value.slice(0, ANSWER_MAX_LENGTH))}
         placeholder="솔직하게, 나에게 쓰듯이 남겨보세요…"
         rows={7}
-        className="w-full resize-none bg-transparent font-body text-[15px] leading-relaxed text-ink placeholder:text-ink-soft/50 focus:outline-none"
+        className="w-full resize-none bg-transparent font-body text-base leading-[1.75] text-ink placeholder:text-ink-soft/50 focus:outline-none"
       />
-      <div className="mt-3 flex items-center justify-between border-t border-line pt-3">
-        <span
-          className={`meta ${tooShort ? "text-clay" : "text-sage"}`}
-        >
+      <div className="mt-3 flex items-center justify-between border-t border-line pt-4">
+        <span className={`meta ${tooShort ? "text-clay" : "text-sage"}`}>
           {tooShort
             ? `최소 ${ANSWER_MIN_LENGTH}자 · ${ANSWER_MIN_LENGTH - count}자 남음`
             : `${count}자 · ${remaining}자 여유`}

@@ -8,7 +8,7 @@ export default function MainLayout({
   return (
     <div className="min-h-dvh md:pt-0">
       <Nav />
-      <main className="mx-auto w-full max-w-xl px-4 pb-24 pt-6 md:pb-12">
+      <main className="mx-auto w-full max-w-xl px-4 pb-28 pt-6 md:pb-12">
         {children}
       </main>
     </div>

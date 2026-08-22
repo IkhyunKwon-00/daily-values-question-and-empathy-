@@ -50,14 +50,16 @@ export default function AnswerCard({ answer }: { answer: FeedAnswer }) {
   return (
     <article className="card p-5">
       <header className="mb-3 flex items-center gap-2">
-        <span className="grid h-8 w-8 place-items-center rounded-full bg-line/60 font-mono text-xs text-ink-soft">
-          {genderLabel[0]}
+        <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-clay to-rose p-[2px]">
+          <span className="grid h-full w-full place-items-center rounded-full bg-paper-card font-mono text-xs text-ink-soft">
+            {genderLabel[0]}
+          </span>
         </span>
         <span className="text-sm text-ink-soft">{genderLabel}</span>
         <span className="meta ml-auto">{relativeTime(answer.created_at)}</span>
       </header>
 
-      <p className="whitespace-pre-wrap font-body text-[15px] leading-relaxed text-ink">
+      <p className="whitespace-pre-wrap font-body text-[15px] leading-[1.75] text-ink">
         {answer.content}
       </p>
 
@@ -67,13 +69,20 @@ export default function AnswerCard({ answer }: { answer: FeedAnswer }) {
           onClick={onLike}
           disabled={pending}
           aria-pressed={liked}
-          className={`btn text-sm ${
+          className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition active:scale-95 ${
             liked
-              ? "bg-clay/10 text-clay"
+              ? "bg-ember text-white shadow-pop"
               : "border border-line text-ink-soft hover:bg-line/40"
           }`}
         >
-          {liked ? "✓ 공감함" : "공감하기"}
+          <span
+            key={liked ? "on" : "off"}
+            className={`text-base leading-none ${liked ? "animate-pop" : ""}`}
+            aria-hidden
+          >
+            {liked ? "♥" : "♡"}
+          </span>
+          공감
         </button>
         <button
           type="button"
