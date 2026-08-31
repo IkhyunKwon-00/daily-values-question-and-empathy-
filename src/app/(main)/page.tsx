@@ -14,7 +14,7 @@ export default async function HomePage() {
   if (!question) {
     return (
       <div className="card p-7 text-center">
-        <p className="font-voice text-xl text-ink">오늘의 질문을 준비하고 있어요</p>
+        <p className="text-xl font-bold text-ink">오늘의 질문을 준비하고 있어요</p>
         <p className="mt-2 text-sm text-ink-soft">잠시 후 다시 찾아와 주세요.</p>
       </div>
     );

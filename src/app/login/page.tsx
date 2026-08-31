@@ -58,7 +58,7 @@ export default function LoginPage() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col justify-center px-6 py-12">
       <header className="mb-10 text-center">
-        <h1 className="font-voice text-3xl leading-snug text-ink">
+        <h1 className="text-3xl font-bold tracking-tight text-ink">
           오늘의 가치관
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-ink-soft">

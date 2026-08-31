@@ -46,7 +46,7 @@ export default function MyAnswerCard({ answer }: { answer: MyAnswer }) {
         <span className="meta ml-auto">{relativeTime(answer.created_at)}</span>
       </header>
 
-      <p className="font-voice text-lg leading-relaxed text-ink">
+      <p className="text-lg font-bold leading-snug tracking-tight text-ink">
         {answer.question_text}
       </p>
 
@@ -87,7 +87,7 @@ export default function MyAnswerCard({ answer }: { answer: MyAnswer }) {
           </p>
           <footer className="mt-4 flex items-center gap-3 border-t border-line pt-3">
             {answer.has_empathy && (
-              <span className="text-xs text-sage">♥ 공감이 도착했어요</span>
+              <span className="text-xs text-clay">♥ 공감이 도착했어요</span>
             )}
             <button
               type="button"

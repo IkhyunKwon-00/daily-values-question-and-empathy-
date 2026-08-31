@@ -50,10 +50,8 @@ export default function AnswerCard({ answer }: { answer: FeedAnswer }) {
   return (
     <article className="card p-5">
       <header className="mb-3 flex items-center gap-2">
-        <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-clay to-rose p-[2px]">
-          <span className="grid h-full w-full place-items-center rounded-full bg-paper-card font-mono text-xs text-ink-soft">
-            {genderLabel[0]}
-          </span>
+        <span className="grid h-9 w-9 place-items-center rounded-full bg-paper-raise text-xs text-ink-soft">
+          {genderLabel[0]}
         </span>
         <span className="text-sm text-ink-soft">{genderLabel}</span>
         <span className="meta ml-auto">{relativeTime(answer.created_at)}</span>
@@ -71,8 +69,8 @@ export default function AnswerCard({ answer }: { answer: FeedAnswer }) {
           aria-pressed={liked}
           className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition active:scale-95 ${
             liked
-              ? "bg-ember text-white shadow-pop"
-              : "border border-line text-ink-soft hover:bg-line/40"
+              ? "bg-ember text-black shadow-pop"
+              : "border border-line text-ink-soft hover:bg-white/5"
           }`}
         >
           <span

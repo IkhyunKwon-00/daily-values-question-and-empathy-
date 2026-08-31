@@ -12,13 +12,6 @@ export default async function MessagesPage() {
 
   return (
     <div className="space-y-4">
-      <header className="px-1">
-        <h1 className="font-voice text-3xl text-ink">쪽지</h1>
-        <p className="mt-1.5 text-sm text-ink-soft">
-          내면으로 이어진 대화. 얼굴 없이도 마음은 오갈 수 있어요.
-        </p>
-      </header>
-
       {conversations.length === 0 ? (
         <div className="card p-7 text-center text-sm text-ink-soft">
           아직 주고받은 쪽지가 없어요. 관심 탭에서 마음이 닿은 사람에게 먼저

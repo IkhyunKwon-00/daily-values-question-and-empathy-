@@ -65,13 +65,6 @@ export default async function LikesPage() {
 
   return (
     <div className="space-y-4">
-      <header className="px-1">
-        <h1 className="font-voice text-3xl text-ink">관심</h1>
-        <p className="mt-1.5 text-sm text-ink-soft">
-          내가 공감을 남긴 생각과 사람들이에요.
-        </p>
-      </header>
-
       <LikesTabs
         cardCount={cards.length}
         authorCount={authors.length}

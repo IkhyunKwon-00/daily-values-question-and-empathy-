@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 :root {
-  color-scheme: light;
-  --font-voice: "Gowun Batang", serif;
-  --font-body: "IBM Plex Sans KR", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: dark;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+    "Helvetica Neue", system-ui, "Apple SD Gothic Neo", sans-serif;
 }
 
 html,
@@ -18,26 +17,14 @@ body {
 body {
   background-color: theme("colors.paper");
   color: theme("colors.ink");
-  font-family: var(--font-body), system-ui, sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* Subtle paper texture using layered gradients */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle at 12% 8%, rgba(255, 138, 76, 0.08), transparent 42%),
-    radial-gradient(circle at 88% 92%, rgba(232, 80, 110, 0.07), transparent 46%);
-}
-
 @layer components {
   .card {
-    @apply bg-paper-card rounded-xl2 shadow-card;
+    @apply bg-paper-card rounded-xl2 border border-line;
   }
 
   .btn {
@@ -48,21 +35,21 @@ body::before {
   }
 
   .btn-primary {
-    @apply btn bg-ember text-white shadow-pop hover:brightness-105;
+    @apply btn bg-ember text-black shadow-pop hover:brightness-105;
   }
 
   .btn-ghost {
-    @apply btn border border-line bg-transparent text-ink-soft hover:bg-line/40;
+    @apply btn border border-line bg-transparent text-ink-soft hover:bg-white/5;
   }
 
   .field {
-    @apply w-full rounded-2xl border border-line bg-paper-card px-4 py-3
+    @apply w-full rounded-2xl border border-line bg-paper-raise px-4 py-3
       text-ink placeholder:text-ink-soft/60 transition
       focus:border-clay focus:outline-none focus:ring-2 focus:ring-clay/30;
   }
 
   .meta {
-    @apply font-mono text-xs tracking-wide text-ink-soft;
+    @apply text-xs tracking-wide text-ink-soft;
   }
 
   .chip {

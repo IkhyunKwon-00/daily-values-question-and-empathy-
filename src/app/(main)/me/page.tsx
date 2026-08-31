@@ -26,7 +26,7 @@ export default async function MePage() {
   return (
     <div className="space-y-4">
       <section className="card flex items-center gap-3 p-5">
-        <span className="grid h-11 w-11 place-items-center rounded-full bg-line/60 font-voice text-lg text-ink-soft">
+        <span className="grid h-11 w-11 place-items-center rounded-full bg-paper-raise text-lg font-semibold text-ink-soft">
           {gender ? GENDER_LABEL[gender][0] : "?"}
         </span>
         <div>

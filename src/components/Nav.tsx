@@ -96,12 +96,12 @@ function SideTab({
   return (
     <Link
       href={href}
-      className={`flex w-14 flex-col items-center gap-0.5 py-1 text-[11px] transition-colors ${
+      aria-label={label}
+      className={`grid h-12 w-12 place-items-center transition-colors ${
         active ? "text-ink" : "text-ink-soft hover:text-ink"
       }`}
     >
       <Icon active={active} />
-      <span>{label}</span>
     </Link>
   );
 }
@@ -111,8 +111,8 @@ export default function Nav() {
   const todayActive = pathname === "/";
 
   return (
-    <nav className="sticky bottom-0 z-20 border-t border-line bg-paper-card/90 backdrop-blur">
-      <div className="mx-auto flex max-w-xl items-end justify-around px-3 pb-2 pt-1.5">
+    <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-paper/90 backdrop-blur">
+      <div className="mx-auto flex max-w-xl items-center justify-around px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5">
         {SIDE_TABS_LEFT.map((t) => (
           <SideTab key={t.href} {...t} active={isActive(pathname, t.href)} />
         ))}
@@ -120,30 +120,21 @@ export default function Nav() {
         <Link
           href="/"
           aria-label="오늘의 질문 작성"
-          className="flex w-14 flex-col items-center"
+          className={`grid h-12 w-12 place-items-center rounded-2xl transition active:scale-95 ${
+            todayActive
+              ? "bg-ember text-black shadow-pop"
+              : "text-ink-soft hover:text-ink"
+          }`}
         >
-          <span
-            className={`-mt-6 grid h-14 w-14 place-items-center rounded-full bg-ember text-white shadow-pop transition active:scale-95 ${
-              todayActive ? "ring-4 ring-clay/20" : ""
-            }`}
-          >
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
-              <path
-                d="M4 20 5 15.5 15.5 5l3.5 3.5L8.5 19 4 20Z"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinejoin="round"
-              />
-              <path d="M13.5 7 17 10.5" stroke="currentColor" strokeWidth="1.8" />
-            </svg>
-          </span>
-          <span
-            className={`-mt-4 text-[11px] ${
-              todayActive ? "text-ink" : "text-ink-soft"
-            }`}
-          >
-            오늘
-          </span>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
+            <path
+              d="M4 20 5 15.5 15.5 5l3.5 3.5L8.5 19 4 20Z"
+              stroke="currentColor"
+              strokeWidth="1.8"
+              strokeLinejoin="round"
+            />
+            <path d="M13.5 7 17 10.5" stroke="currentColor" strokeWidth="1.8" />
+          </svg>
         </Link>
 
         {SIDE_TABS_RIGHT.map((t) => (

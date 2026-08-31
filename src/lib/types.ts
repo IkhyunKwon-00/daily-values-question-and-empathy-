@@ -47,6 +47,7 @@ export type ExploreCard = {
   question_text: string;
   question_category: string;
   author_gender: Gender | null;
+  author_name: string;
   liked_by_me: boolean;
 };
 
