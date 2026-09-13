@@ -22,7 +22,7 @@ const config: Config = {
         indigo: "#9D9A91",
       },
       fontFamily: {
-        voice: ["var(--font-body)", "sans-serif"],
+        voice: ["var(--font-voice)", "serif"],
         body: ["var(--font-body)", "sans-serif"],
         mono: ["var(--font-body)", "sans-serif"],
         logo: ["var(--font-logo)", "cursive"],

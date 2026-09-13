@@ -6,7 +6,6 @@ import { editAnswer } from "@/app/actions";
 import type { MyAnswer } from "@/lib/data";
 import { ANSWER_MAX_LENGTH, ANSWER_MIN_LENGTH } from "@/lib/types";
 import { relativeTime, countChars } from "@/lib/format";
-import { categoryStyle } from "@/lib/category";
 
 export default function MyAnswerCard({ answer }: { answer: MyAnswer }) {
   const router = useRouter();
@@ -15,7 +14,6 @@ export default function MyAnswerCard({ answer }: { answer: MyAnswer }) {
   const [error, setError] = useState<string | null>(null);
   const [pending, startTransition] = useTransition();
 
-  const style = categoryStyle(answer.question_category);
   const count = countChars(value);
   const tooShort = count < ANSWER_MIN_LENGTH;
 
@@ -39,14 +37,12 @@ export default function MyAnswerCard({ answer }: { answer: MyAnswer }) {
   }
 
   return (
-    <article className="card relative overflow-hidden rounded-xl3 p-6">
-      <span className={`absolute inset-x-0 top-0 h-1 ${style.dot}`} aria-hidden />
-      <header className="mb-2 flex items-center gap-2">
-        <span className={`chip ${style.chip}`}>{answer.question_category}</span>
+    <article className="card rounded-xl3 p-6">
+      <header className="mb-3 flex items-center">
         <span className="meta ml-auto">{relativeTime(answer.created_at)}</span>
       </header>
 
-      <p className="text-lg font-bold leading-snug tracking-tight text-ink">
+      <p className="font-voice text-xl font-bold leading-[1.5] text-ink">
         {answer.question_text}
       </p>
 

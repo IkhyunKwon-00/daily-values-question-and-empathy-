@@ -105,14 +105,12 @@ export default function DesignSystemShowcase() {
               <Avatar label="남성" />
               <Avatar label="익명" size="lg" online />
               <Tag tone="accent">오늘의 질문</Tag>
-              <Tag>관계</Tag>
               <Tag tone="warm">진솔함</Tag>
             </div>
           </ComponentSection>
 
           <ComponentSection id="question" title="Question Card">
             <QuestionCard
-              category="관계"
               question="누군가를 오래 좋아하게 만드는 건 어떤 마음이라고 생각하나요?"
               meta="오늘 자정까지 답할 수 있어요"
             />
@@ -134,7 +132,6 @@ export default function DesignSystemShowcase() {
 
             <div className="mt-5 columns-2 gap-3 sm:gap-4">
               <ExploreCard
-                category="일상"
                 question="당신을 편안하게 만드는 사소한 순간은?"
                 answer="아무 약속 없는 토요일 오전, 커피가 식는 줄도 모르고 책을 읽을 때."
                 authorLabel="익명의 남성"
@@ -142,7 +139,6 @@ export default function DesignSystemShowcase() {
               />
               <ExploreCard
                 className="mt-3 sm:mt-4"
-                category="가치관"
                 question="좋은 어른이 된다는 건 무엇일까요?"
                 answer="모르는 것을 모른다고 말할 수 있고, 뒤늦게라도 사과할 줄 아는 사람. 자신의 확신보다 다른 사람의 마음을 한 번 더 살피는 사람이라고 생각해요."
                 authorLabel="익명의 여성"

@@ -48,7 +48,7 @@ export default async function LikesPage() {
               <div className="min-w-0">
                 <p className="text-[15px] text-ink">{label}</p>
                 <p className="meta">
-                  내가 공감 {a.like_count}번 · {relativeTime(a.last_liked_at)}
+                  마지막으로 마음이 머문 때 · {relativeTime(a.last_liked_at)}
                 </p>
               </div>
               <Link
@@ -66,8 +66,6 @@ export default async function LikesPage() {
   return (
     <div className="space-y-4">
       <LikesTabs
-        cardCount={cards.length}
-        authorCount={authors.length}
         cards={cardsNode}
         authors={authorsNode}
       />

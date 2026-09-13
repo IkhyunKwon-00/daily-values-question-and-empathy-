@@ -2,13 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Bell, Search } from "lucide-react";
+import { Heart, Search } from "lucide-react";
 import BrandMark from "@/components/layout/BrandMark";
 
 export default function AppHeader() {
   const pathname = usePathname();
 
-  if (pathname === "/write") return null;
+  if (
+    pathname.startsWith("/answers/") ||
+    /^\/feed\/.+/.test(pathname) ||
+    pathname.startsWith("/people/")
+  ) {
+    return null;
+  }
 
   return (
     <header className="sticky top-0 z-20 bg-paper/90 backdrop-blur-xl">
@@ -17,7 +23,7 @@ export default function AppHeader() {
         <div className="ml-auto flex items-center gap-1">
           <Link
             href="/feed"
-            aria-label="생각 검색"
+            aria-label="탐색"
             title="검색"
             className="grid h-10 w-10 place-items-center rounded-lg text-ink-soft transition hover:bg-white/[0.05] hover:text-ink"
           >
@@ -25,11 +31,11 @@ export default function AppHeader() {
           </Link>
           <Link
             href="/likes"
-            aria-label="알림"
-            title="알림"
+            aria-label="공감"
+            title="공감"
             className="relative grid h-10 w-10 place-items-center rounded-lg text-ink-soft transition hover:bg-white/[0.05] hover:text-ink"
           >
-            <Bell className="h-5 w-5" strokeWidth={1.8} />
+            <Heart className="h-5 w-5" strokeWidth={1.8} />
             <span
               className="absolute right-2 top-2 h-1.5 w-1.5 rounded-full bg-clay"
               aria-hidden

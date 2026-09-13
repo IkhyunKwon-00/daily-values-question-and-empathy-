@@ -30,10 +30,10 @@ export default function ExploreCard({ card }: { card: ExploreCardType }) {
   return (
     <div className="animate-fade-up">
       <article className="card p-4">
-        <p className="text-[15px] font-bold leading-snug tracking-tight text-ink">
+        <p className="font-voice text-lg font-bold leading-[1.5] text-ink">
           {card.question_text}
         </p>
-        <p className="mt-2 whitespace-pre-wrap text-[13px] leading-relaxed text-ink-soft">
+        <p className="mt-3 whitespace-pre-wrap font-body text-[14px] leading-[1.8] text-ink-soft">
           {card.content}
         </p>
       </article>

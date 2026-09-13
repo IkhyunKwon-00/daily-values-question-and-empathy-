@@ -7,6 +7,7 @@ import Avatar from "@/components/ui/Avatar";
 import IconButton from "@/components/ui/IconButton";
 import LikeButton from "@/components/ui/LikeButton";
 import QuestionCard from "@/components/ui/QuestionCard";
+import HomeAnswerComposer from "@/components/home/HomeAnswerComposer";
 import { MOCK_HOME_ANSWERS, TODAY_QUESTION } from "@/lib/mock-home";
 
 export default function HomeFeed() {
@@ -32,17 +33,11 @@ export default function HomeFeed() {
       <section id="answer" className="scroll-mt-24">
         <QuestionCard
           eyebrow="TODAY'S QUESTION"
-          category="삶의 방식"
           question={TODAY_QUESTION}
-          meta={
-            <div className="flex flex-wrap items-center gap-3">
-              <Link href="/write" className="btn-primary h-12 px-6 text-[15px]">
-                오늘의 질문에 답하기
-              </Link>
-              <span className="text-ink-soft">오늘 이미 답을 남겨 피드가 열렸어요</span>
-            </div>
-          }
         />
+        <div className="mt-3">
+          <HomeAnswerComposer />
+        </div>
       </section>
 
       <section aria-labelledby="feed-heading">
@@ -77,7 +72,7 @@ export default function HomeFeed() {
                       <p className="mt-0.5 text-xs text-ink-soft">{answer.createdAt}</p>
                     </div>
                   </header>
-                  <p className="whitespace-pre-wrap text-[15px] leading-[1.85] text-ink sm:text-base">
+                  <p className="whitespace-pre-wrap font-body text-[15px] leading-[1.85] text-ink sm:text-base">
                     {answer.content}
                   </p>
                 </Link>
@@ -89,11 +84,11 @@ export default function HomeFeed() {
                   />
                   <Link
                     href={`/answers/${answer.id}#comments`}
-                    aria-label={`댓글 ${answer.comments}개 보기`}
+                    aria-label="이 답변의 대화 보기"
                     className="inline-flex h-10 items-center gap-1.5 rounded-lg px-2.5 text-sm text-ink-soft transition hover:bg-white/[0.05] hover:text-ink"
                   >
                     <MessageCircle className="h-5 w-5" strokeWidth={1.8} />
-                    <span>{answer.comments}</span>
+                    <span>대화</span>
                   </Link>
                   <IconButton
                     className="ml-auto"

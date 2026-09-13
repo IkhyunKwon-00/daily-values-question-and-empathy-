@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond, Gowun_Batang } from "next/font/google";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["600"],
   variable: "--font-logo",
+  display: "swap",
+});
+
+const gowunBatang = Gowun_Batang({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-voice",
   display: "swap",
 });
 
@@ -24,7 +31,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={cormorant.variable}>
+    <html lang="ko" className={`${cormorant.variable} ${gowunBatang.variable}`}>
       <body>{children}</body>
     </html>
   );

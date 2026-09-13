@@ -4,7 +4,6 @@ import { cn } from "@/lib/cn";
 
 export type QuestionCardProps = HTMLAttributes<HTMLElement> & {
   question: string;
-  category?: string;
   eyebrow?: string;
   meta?: ReactNode;
 };
@@ -12,7 +11,6 @@ export type QuestionCardProps = HTMLAttributes<HTMLElement> & {
 export default function QuestionCard({
   className,
   question,
-  category,
   eyebrow = "오늘의 질문",
   meta,
   ...props
@@ -28,9 +26,8 @@ export default function QuestionCard({
       <span className="absolute inset-x-0 top-0 h-0.5 bg-clay" aria-hidden />
       <div className="mb-5 flex items-center gap-2">
         <Tag tone="accent">{eyebrow}</Tag>
-        {category && <span className="ml-auto text-xs text-ink-soft">{category}</span>}
       </div>
-      <h2 className="max-w-[24ch] text-[clamp(1.65rem,6vw,2.4rem)] font-bold leading-[1.3] text-ink">
+      <h2 className="max-w-[26ch] font-voice text-[clamp(1.45rem,5vw,2rem)] font-bold leading-[1.5] text-ink">
         {question}
       </h2>
       {meta && <div className="mt-5 text-xs text-ink-soft">{meta}</div>}

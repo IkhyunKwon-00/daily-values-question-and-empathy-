@@ -1,12 +1,10 @@
 import type { HTMLAttributes, ReactNode } from "react";
 import Avatar from "@/components/ui/Avatar";
-import Tag from "@/components/ui/Tag";
 import { cn } from "@/lib/cn";
 
 export type ExploreCardProps = HTMLAttributes<HTMLElement> & {
   question: string;
   answer: string;
-  category?: string;
   authorLabel?: string;
   action?: ReactNode;
 };
@@ -15,7 +13,6 @@ export default function ExploreCard({
   className,
   question,
   answer,
-  category,
   authorLabel = "익명",
   action,
   ...props
@@ -28,9 +25,8 @@ export default function ExploreCard({
       )}
       {...props}
     >
-      {category && <Tag className="mb-4">{category}</Tag>}
-      <h3 className="text-base font-bold leading-[1.45] text-ink">{question}</h3>
-      <p className="mt-3 whitespace-pre-wrap text-sm leading-[1.75] text-ink-soft">
+      <h3 className="font-voice text-lg font-bold leading-[1.5] text-ink">{question}</h3>
+      <p className="mt-3 whitespace-pre-wrap font-body text-sm leading-[1.8] text-ink-soft">
         {answer}
       </p>
       <footer className="mt-5 flex items-center gap-2">

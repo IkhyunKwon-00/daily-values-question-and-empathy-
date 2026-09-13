@@ -1,5 +1,5 @@
-import WriteAnswerPage from "@/components/write/WriteAnswerPage";
+import { redirect } from "next/navigation";
 
 export default function WritePage() {
-  return <WriteAnswerPage />;
+  redirect("/#answer");
 }

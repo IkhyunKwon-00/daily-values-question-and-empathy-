@@ -4,5 +4,4 @@ export const PUBLISHED_ANSWER_KEY = "within:published-answer";
 export type PublishedMockAnswer = {
   question: string;
   answer: string;
-  category: string;
 };

@@ -30,7 +30,7 @@ export default function AnswerCard({
         </div>
       </header>
 
-      <p className="max-w-[42rem] whitespace-pre-wrap text-[15px] leading-[1.85] text-ink sm:text-base">
+      <p className="max-w-[42rem] whitespace-pre-wrap font-body text-[15px] leading-[1.85] text-ink sm:text-base">
         {answer}
       </p>
 

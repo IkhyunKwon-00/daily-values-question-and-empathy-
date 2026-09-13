@@ -3,13 +3,9 @@
 import { useState } from "react";
 
 export default function LikesTabs({
-  cardCount,
-  authorCount,
   cards,
   authors,
 }: {
-  cardCount: number;
-  authorCount: number;
   cards: React.ReactNode;
   authors: React.ReactNode;
 }) {
@@ -25,7 +21,7 @@ export default function LikesTabs({
             tab === "cards" ? "bg-ink text-paper-card" : "text-ink-soft"
           }`}
         >
-          공감한 답변 {cardCount}
+          공감한 답변
         </button>
         <button
           type="button"
@@ -34,7 +30,7 @@ export default function LikesTabs({
             tab === "authors" ? "bg-ink text-paper-card" : "text-ink-soft"
           }`}
         >
-          작성자 {authorCount}
+          작성자
         </button>
       </div>
 

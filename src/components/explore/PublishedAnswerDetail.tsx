@@ -20,7 +20,7 @@ export default function PublishedAnswerDetail() {
     return (
       <div className="py-16 text-center">
         <p className="text-lg font-bold text-ink">게시한 답변을 찾을 수 없어요</p>
-        <Link href="/write" className="btn-primary mt-5">새 답변 쓰기</Link>
+        <Link href="/#answer" className="btn-primary mt-5">홈에서 답변 쓰기</Link>
       </div>
     );
   }
@@ -30,6 +30,8 @@ export default function PublishedAnswerDetail() {
       question={answer.question}
       backHref="/feed"
       backLabel="탐색으로"
+      authorId="00000000-0000-4000-8000-000000000000"
+      profileHref="/me"
       answer={{
         id: "my-latest-answer",
         gender: "기타",
