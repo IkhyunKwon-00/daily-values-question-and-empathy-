@@ -2,84 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Bell, Compass, Home, PenLine, UserRound, type LucideIcon } from "lucide-react";
 
-type IconProps = { active: boolean };
-
-function CompassIcon({ active }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
-      <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.8" />
-      <path
-        d="M15.5 8.5 13.3 13.3 8.5 15.5 10.7 10.7 15.5 8.5Z"
-        fill={active ? "currentColor" : "none"}
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function HeartIcon({ active }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
-      <path
-        d="M12 20s-7-4.35-9.2-8.4C1.4 9.1 2.5 6 5.6 6c1.9 0 3.1 1.2 3.9 2.3.8-1.1 2-2.3 3.9-2.3 3.1 0 4.2 3.1 2.8 5.6C19 15.65 12 20 12 20Z"
-        fill={active ? "currentColor" : "none"}
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function MessageIcon({ active }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
-      <path
-        d="M4 5h16v11H8l-4 3V5Z"
-        fill={active ? "currentColor" : "none"}
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
-function UserIcon({ active }: IconProps) {
-  return (
-    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
-      <circle
-        cx="12"
-        cy="8.5"
-        r="3.5"
-        fill={active ? "currentColor" : "none"}
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <path
-        d="M5 19.5c0-3.3 3.1-5.5 7-5.5s7 2.2 7 5.5"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-const SIDE_TABS_LEFT = [
-  { href: "/feed", label: "탐색", Icon: CompassIcon },
-  { href: "/likes", label: "관심", Icon: HeartIcon },
-];
-const SIDE_TABS_RIGHT = [
-  { href: "/messages", label: "쪽지", Icon: MessageIcon },
-  { href: "/me", label: "기록", Icon: UserIcon },
+const NAV_ITEMS = [
+  { href: "/", label: "홈", Icon: Home },
+  { href: "/feed", label: "탐색", Icon: Compass },
+  { href: "/write", label: "작성", Icon: PenLine, accent: true },
+  { href: "/likes", label: "알림", Icon: Bell },
+  { href: "/me", label: "프로필", Icon: UserRound },
 ];
 
 function isActive(pathname: string, href: string) {
-  return href === "/" ? pathname === "/" : pathname.startsWith(href);
+  if (href === "/") return pathname === "/" || pathname.startsWith("/answers/");
+  return pathname.startsWith(href);
 }
 
 function SideTab({
@@ -87,60 +22,45 @@ function SideTab({
   label,
   Icon,
   active,
+  accent = false,
 }: {
   href: string;
   label: string;
-  Icon: (p: IconProps) => JSX.Element;
+  Icon: LucideIcon;
   active: boolean;
+  accent?: boolean;
 }) {
   return (
     <Link
       href={href}
       aria-label={label}
-      className={`grid h-12 w-12 place-items-center transition-colors ${
-        active ? "text-ink" : "text-ink-soft hover:text-ink"
+      className={`group flex h-14 min-w-14 flex-col items-center justify-center gap-1 rounded-lg px-2 text-[10px] font-medium transition lg:h-12 lg:w-full lg:flex-row lg:justify-start lg:gap-3 lg:px-3 lg:text-sm ${
+        accent
+          ? "text-clay hover:bg-clay/10"
+          : active
+          ? "bg-white/[0.06] text-clay"
+          : "text-ink-soft hover:bg-white/[0.04] hover:text-ink"
       }`}
     >
-      <Icon active={active} />
+      <Icon className="h-5 w-5 lg:h-6 lg:w-6" strokeWidth={active ? 2.2 : 1.8} />
+      <span>{label}</span>
     </Link>
   );
 }
 
 export default function Nav() {
   const pathname = usePathname();
-  const todayActive = pathname === "/";
 
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 border-t border-line bg-paper/90 backdrop-blur">
-      <div className="mx-auto flex max-w-xl items-center justify-around px-3 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-1.5">
-        {SIDE_TABS_LEFT.map((t) => (
+    <aside className="fixed inset-x-0 bottom-0 z-30 border-t border-line/70 bg-paper/95 backdrop-blur-xl lg:inset-y-0 lg:left-0 lg:right-auto lg:w-64 lg:border-r lg:border-t-0">
+      <p className="hidden px-8 pb-8 pt-8 text-xs leading-relaxed text-ink-soft lg:block">
+        사람을 만나기 전에,<br />그 사람의 생각을 만나는 곳.
+      </p>
+      <nav className="mx-auto flex max-w-2xl items-center justify-around px-2 pb-[max(0.25rem,env(safe-area-inset-bottom))] pt-1 lg:block lg:space-y-2 lg:px-5 lg:py-0">
+        {NAV_ITEMS.map((t) => (
           <SideTab key={t.href} {...t} active={isActive(pathname, t.href)} />
         ))}
-
-        <Link
-          href="/"
-          aria-label="오늘의 질문 작성"
-          className={`grid h-12 w-12 place-items-center rounded-2xl transition active:scale-95 ${
-            todayActive
-              ? "bg-ember text-black shadow-pop"
-              : "text-ink-soft hover:text-ink"
-          }`}
-        >
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
-            <path
-              d="M4 20 5 15.5 15.5 5l3.5 3.5L8.5 19 4 20Z"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              strokeLinejoin="round"
-            />
-            <path d="M13.5 7 17 10.5" stroke="currentColor" strokeWidth="1.8" />
-          </svg>
-        </Link>
-
-        {SIDE_TABS_RIGHT.map((t) => (
-          <SideTab key={t.href} {...t} active={isActive(pathname, t.href)} />
-        ))}
-      </div>
-    </nav>
+      </nav>
+    </aside>
   );
 }

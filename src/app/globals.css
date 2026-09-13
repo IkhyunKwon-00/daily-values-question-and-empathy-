@@ -20,11 +20,20 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  background-image:
+    radial-gradient(circle at 50% -20%, rgba(242, 201, 76, 0.08), transparent 34rem),
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: auto, 100% 4rem;
+}
+
+::selection {
+  background: theme("colors.clay");
+  color: theme("colors.paper");
 }
 
 @layer components {
   .card {
-    @apply bg-paper-card rounded-xl2 border border-line;
+    @apply rounded-xl2 bg-paper-card shadow-soft;
   }
 
   .btn {

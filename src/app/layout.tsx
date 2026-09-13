@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
-import { Caveat } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
-const caveat = Caveat({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["600"],
   variable: "--font-logo",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "오늘의 가치관",
+  title: {
+    default: "Within",
+    template: "%s · Within",
+  },
   description:
-    "매일 하나의 가치관 질문에 답을 남기는 저널 앱. 외모가 아닌 생각과 가치관으로 먼저 연결됩니다.",
+    "사람을 만나기 전에, 그 사람의 생각을 만나는 가치관 기반 소셜 서비스.",
 };
 
 export default function RootLayout({
@@ -21,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko" className={caveat.variable}>
+    <html lang="ko" className={cormorant.variable}>
       <body>{children}</body>
     </html>
   );

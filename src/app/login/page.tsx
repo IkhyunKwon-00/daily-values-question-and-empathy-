@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { GENDER_LABEL, type Gender } from "@/lib/types";
+import BrandMark from "@/components/layout/BrandMark";
 
 type Mode = "login" | "signup";
 
@@ -58,11 +59,9 @@ export default function LoginPage() {
   return (
     <div className="mx-auto flex min-h-dvh max-w-md flex-col justify-center px-6 py-12">
       <header className="mb-10 text-center">
-        <h1 className="text-3xl font-bold tracking-tight text-ink">
-          오늘의 가치관
-        </h1>
+        <h1><BrandMark linked={false} /></h1>
         <p className="mt-3 text-sm leading-relaxed text-ink-soft">
-          외모가 아닌 생각과 가치관으로 먼저.
+          사람을 만나기 전에, 그 사람의 생각을 먼저.
           <br />
           매일 하나의 질문에 진솔한 답을 남겨보세요.
         </p>

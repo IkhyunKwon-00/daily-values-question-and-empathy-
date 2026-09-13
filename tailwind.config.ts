@@ -8,18 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#000000",
-        "paper-card": "#1C1C1E",
-        "paper-raise": "#2C2C2E",
-        ink: "#FFFFFF",
-        "ink-soft": "#8E8E93",
-        line: "#2C2C2E",
-        clay: "#F5C518",
-        "clay-deep": "#D9A800",
-        sage: "#E9C84B",
-        rose: "#F5C518",
-        amber: "#F5C518",
-        indigo: "#8E8E93",
+        paper: "#111111",
+        "paper-card": "#191918",
+        "paper-raise": "#252522",
+        ink: "#F4F1E8",
+        "ink-soft": "#9D9A91",
+        line: "#302F2A",
+        clay: "#F2C94C",
+        "clay-deep": "#D7AE32",
+        sage: "#D9C978",
+        rose: "#E6A78D",
+        amber: "#F2C94C",
+        indigo: "#9D9A91",
       },
       fontFamily: {
         voice: ["var(--font-body)", "sans-serif"],
@@ -29,7 +29,7 @@ const config: Config = {
       },
       backgroundImage: {
         ember:
-          "linear-gradient(135deg,#FFE066 0%,#F5C518 52%,#E0A800 100%)",
+          "linear-gradient(135deg,#F6D967 0%,#F2C94C 58%,#D7AE32 100%)",
       },
       boxShadow: {
         soft: "0 1px 3px rgba(0,0,0,0.4)",
@@ -37,8 +37,8 @@ const config: Config = {
         pop: "0 8px 24px rgba(245,197,24,0.28)",
       },
       borderRadius: {
-        xl2: "1.5rem",
-        xl3: "2rem",
+        xl2: "0.5rem",
+        xl3: "0.5rem",
       },
       keyframes: {
         pop: {
