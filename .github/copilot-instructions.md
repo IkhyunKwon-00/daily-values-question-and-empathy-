@@ -1,4 +1,4 @@
-# Copilot Instructions (Daily Values Question and Empathy)
+# Copilot Instructions (weve)
 
 > GitHub Copilot이 이 저장소의 모든 대화에 자동으로 로드하는 지침서입니다.
 > AI 어시스턴트와 사람이 함께 보는 단일 원본입니다.
@@ -21,7 +21,7 @@
 
 ---
 
-## 2. 프로젝트 개요 — Daily Values
+## 2. 프로젝트 개요 — weve
 
 매일 하나의 **가치관·취향 질문**에 서로가 진솔하게 답하고, 그 답들을 **존중하며 바라봐주는 것**에서
 시작하는 앱. 속마음을 나누며 안정감을 느끼고, 때로는 이성 간에 설렘을 느끼기도 한다.

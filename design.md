@@ -1,6 +1,6 @@
-# Daily Values Design System
+# weve Design System
 
-> 이 문서는 Daily Values 앱의 디자인 시스템 원본(single source of truth)입니다.
+> 이 문서는 weve 앱의 디자인 시스템 원본(single source of truth)입니다.
 > 토큰·컴포넌트·상태는 실제 코드(`tailwind.config.ts`, `globals.css`, `src/components/*`)와
 > 1:1로 일치해야 합니다. 값을 바꾸면 코드와 이 문서를 **양쪽 모두** 갱신하세요.
 
@@ -9,7 +9,7 @@
 
 ### Visual Theme & Atmosphere
 
-Daily Values는 **얼굴 없이 가치관과 취향으로 먼저 연결되는** 앱입니다. 톤은
+weve는 **얼굴 없이 가치관과 취향으로 먼저 연결되는** 앱입니다. 톤은
 **진솔함 · 따뜻함**이 바탕이고, 그 위에 **20대 중반–30대 초반이 매일 쓰고 싶은
 현대적 감각**을 얹습니다. 참조 UX는 두 축입니다.
 

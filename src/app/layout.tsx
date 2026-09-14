@@ -18,8 +18,8 @@ const gowunBatang = Gowun_Batang({
 
 export const metadata: Metadata = {
   title: {
-    default: "Within",
-    template: "%s · Within",
+    default: "weve",
+    template: "%s · weve",
   },
   description:
     "사람을 만나기 전에, 그 사람의 생각을 만나는 가치관 기반 소셜 서비스.",

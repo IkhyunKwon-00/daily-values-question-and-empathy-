@@ -1,4 +1,4 @@
-# Daily Values Question and Empathy
+# weve
 
 매일 하나의 가치관 질문에 답을 남기는 저널 앱. 답변은 피드처럼 쌓이고, 마음에 드는
 가치관을 가진 사람을 발견하며 자연스럽게 연결됩니다. **외모가 아닌 생각과 가치관으로
@@ -37,7 +37,7 @@ npm install
 
 1. SQL Editor에서 `supabase/migrations/0001_init.sql` 실행 (스키마 + RLS + 트리거)
 2. 이어서 `supabase/seed.sql` 실행 (오늘부터 하루 한 개씩 질문 뱅크 등록)
-3. Authentication > Providers 에서 Email 활성화
+3. Authentication > Providers 에서 Email과 Anonymous Sign-Ins 활성화
 
 ### 3. 환경 변수
 

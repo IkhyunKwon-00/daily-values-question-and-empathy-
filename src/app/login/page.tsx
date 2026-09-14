@@ -17,8 +17,32 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [gender, setGender] = useState<Gender>("female");
   const [pending, setPending] = useState(false);
+  const [demoPending, setDemoPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
+
+  async function startDemo() {
+    setError(null);
+    setNotice(null);
+    setDemoPending(true);
+
+    const { error } = await supabase.auth.signInAnonymously({
+      options: { data: { gender: "other" } },
+    });
+
+    if (error) {
+      setError(
+        error.message.toLowerCase().includes("anonymous")
+          ? "지금은 체험 로그인을 사용할 수 없어요. 잠시 후 다시 시도해 주세요."
+          : error.message
+      );
+      setDemoPending(false);
+      return;
+    }
+
+    router.replace("/");
+    router.refresh();
+  }
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -142,8 +166,27 @@ export default function LoginPage() {
         {error && <p className="text-sm text-clay">{error}</p>}
         {notice && <p className="text-sm text-sage">{notice}</p>}
 
-        <button type="submit" disabled={pending} className="btn-primary w-full">
+        <button
+          type="submit"
+          disabled={pending || demoPending}
+          className="btn-primary w-full"
+        >
           {pending ? "잠시만요…" : mode === "login" ? "로그인" : "가입하기"}
+        </button>
+
+        <div className="flex items-center gap-3 py-1" aria-hidden>
+          <span className="h-px flex-1 bg-line" />
+          <span className="text-xs text-ink-soft">또는</span>
+          <span className="h-px flex-1 bg-line" />
+        </div>
+
+        <button
+          type="button"
+          disabled={pending || demoPending}
+          onClick={startDemo}
+          className="btn-ghost w-full"
+        >
+          {demoPending ? "체험 준비 중…" : "이메일 없이 체험하기"}
         </button>
       </form>
     </div>
