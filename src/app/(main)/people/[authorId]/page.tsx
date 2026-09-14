@@ -6,5 +6,12 @@ export default function ThoughtProfilePage({ params }: { params: { authorId: str
   const author = getMockAuthor(params.authorId);
   if (!author) notFound();
 
-  return <ThoughtProfile authorId={author.id} gender={author.gender} thoughts={author.thoughts} />;
+  return (
+    <ThoughtProfile
+      authorId={author.id}
+      name={author.name}
+      gender={author.gender}
+      thoughts={author.thoughts}
+    />
+  );
 }

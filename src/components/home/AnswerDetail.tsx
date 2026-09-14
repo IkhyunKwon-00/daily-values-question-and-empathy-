@@ -86,10 +86,12 @@ export default function AnswerDetail({
 
       <section className="mt-12">
         <Link href={profileHref ?? `/people/${authorId}`} className="inline-flex items-center gap-3 rounded-lg pr-3 transition hover:bg-white/[0.04]">
-          <Avatar label={answer.gender} />
+          <Avatar label={answer.authorName} />
           <div>
-            <p className="font-semibold text-ink">{answer.gender}</p>
-            <p className="mt-0.5 text-xs text-ink-soft">{answer.createdAt}</p>
+            <p className="font-semibold text-ink">{answer.authorName}</p>
+            <p className="mt-0.5 text-xs text-ink-soft">
+              {answer.gender} · {answer.createdAt}
+            </p>
           </div>
         </Link>
         <p className="mt-8 whitespace-pre-wrap font-body text-[17px] leading-[2] text-ink sm:text-lg">
@@ -173,8 +175,8 @@ export default function AnswerDetail({
                   <p className="mt-3 line-clamp-3 font-body text-sm leading-[1.8] text-ink-soft">{thought.answer}</p>
                 </Link>
                 <footer className="mt-4 flex items-center gap-2">
-                  <Avatar label={thought.gender} size="sm" />
-                  <span className="text-xs text-ink-soft">{thought.gender}</span>
+                  <Avatar label={thought.authorName} size="sm" />
+                  <span className="text-xs text-ink-soft">{thought.authorName}</span>
                   <LikeButton
                     className="ml-auto"
                     liked={relatedLikedIds.has(thought.id)}

@@ -34,6 +34,8 @@ export default function PublishedAnswerDetail() {
       profileHref="/me"
       answer={{
         id: "my-latest-answer",
+        userId: "00000000-0000-4000-8000-000000000000",
+        authorName: "나의 생각",
         gender: "기타",
         content: answer.answer,
         comments: 0,

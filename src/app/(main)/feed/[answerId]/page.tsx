@@ -4,7 +4,6 @@ import DetailUnavailable from "@/components/detail/DetailUnavailable";
 import AnswerDetail from "@/components/home/AnswerDetail";
 import { getMockExploreCard, MOCK_EXPLORE_CARDS } from "@/lib/mock-explore";
 import {
-  getMockAuthorId,
   getMockAuthorThoughts,
   getMockComments,
   hasMutualInterest,
@@ -34,7 +33,7 @@ export default function ExploreAnswerPage({
 
   const card = getMockExploreCard(params.answerId);
   if (!card) notFound();
-  const authorId = getMockAuthorId(card.id, card.gender);
+  const authorId = card.userId;
   const otherThoughts = getMockAuthorThoughts(authorId).filter(
     (thought) => thought.id !== card.id,
   );
@@ -50,6 +49,8 @@ export default function ExploreAnswerPage({
       mutualInterest={hasMutualInterest(card.id)}
       answer={{
         id: card.id,
+        userId: card.userId,
+        authorName: card.authorName,
         gender: card.gender,
         content: card.answer,
         comments: card.comments,

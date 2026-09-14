@@ -29,7 +29,7 @@ export default function HomeFeed() {
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-7">
       <section id="answer" className="scroll-mt-24">
         <QuestionCard
           eyebrow="TODAY'S QUESTION"
@@ -41,17 +41,17 @@ export default function HomeFeed() {
       </section>
 
       <section aria-labelledby="feed-heading">
-        <div className="mb-5 flex items-end justify-between">
+        <div className="mb-3 flex items-end justify-between">
           <div>
-            <p className="text-xs font-semibold uppercase text-clay">Today</p>
-            <h1 id="feed-heading" className="mt-1 text-2xl font-bold text-ink">
+            <p className="text-[10px] font-semibold uppercase text-clay">Today</p>
+            <h1 id="feed-heading" className="mt-0.5 text-xl font-bold text-ink">
               오늘의 생각
             </h1>
           </div>
-          <p className="text-xs text-ink-soft">최신순</p>
+          <p className="text-[10px] text-ink-soft">최신순</p>
         </div>
 
-        <div className="space-y-4 sm:space-y-5">
+        <div className="space-y-2.5">
           {MOCK_HOME_ANSWERS.map((answer) => {
             const liked = likedIds.has(answer.id);
             const saved = savedIds.has(answer.id);
@@ -63,21 +63,26 @@ export default function HomeFeed() {
               >
                 <Link
                   href={`/answers/${answer.id}`}
-                  className="block px-5 pb-3 pt-5 sm:px-6 sm:pt-6"
+                  className="block px-4 pb-2 pt-4"
                 >
-                  <header className="mb-5 flex items-center gap-3">
-                    <Avatar label={answer.gender} />
-                    <div>
-                      <p className="text-sm font-semibold text-ink">{answer.gender}</p>
-                      <p className="mt-0.5 text-xs text-ink-soft">{answer.createdAt}</p>
+                  <header className="mb-3 flex items-center gap-2.5">
+                    <Avatar label={answer.gender} size="sm" />
+                    <div className="min-w-0">
+                      <p className="flex items-baseline gap-1.5 text-xs font-semibold text-ink">
+                        <span>{answer.gender}</span>
+                        <span className="truncate text-[10px] font-normal text-ink-soft">
+                          {answer.authorName}
+                        </span>
+                      </p>
+                      <p className="mt-0.5 text-[10px] text-ink-soft/70">{answer.createdAt}</p>
                     </div>
                   </header>
-                  <p className="whitespace-pre-wrap font-body text-[15px] leading-[1.85] text-ink sm:text-base">
+                  <p className="whitespace-pre-wrap font-body text-[13px] leading-[1.7] text-ink">
                     {answer.content}
                   </p>
                 </Link>
 
-                <footer className="flex items-center gap-1 px-4 pb-4 sm:px-5">
+                <footer className="flex items-center gap-0.5 px-3 pb-2.5">
                   <LikeButton
                     liked={liked}
                     onClick={() => toggleSet(answer.id, setLikedIds)}
@@ -85,9 +90,9 @@ export default function HomeFeed() {
                   <Link
                     href={`/answers/${answer.id}#comments`}
                     aria-label="이 답변의 대화 보기"
-                    className="inline-flex h-10 items-center gap-1.5 rounded-lg px-2.5 text-sm text-ink-soft transition hover:bg-white/[0.05] hover:text-ink"
+                    className="inline-flex h-9 items-center gap-1.5 rounded-lg px-2 text-xs text-ink-soft transition hover:bg-white/[0.05] hover:text-ink"
                   >
-                    <MessageCircle className="h-5 w-5" strokeWidth={1.8} />
+                    <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
                     <span>대화</span>
                   </Link>
                   <IconButton

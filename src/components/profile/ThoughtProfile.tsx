@@ -10,10 +10,12 @@ import type { MockThought } from "@/lib/mock-people";
 
 export default function ThoughtProfile({
   authorId,
+  name,
   gender,
   thoughts,
 }: {
   authorId: string;
+  name: string;
   gender: MockThought["gender"];
   thoughts: MockThought[];
 }) {
@@ -31,8 +33,9 @@ export default function ThoughtProfile({
       </header>
 
       <section className="py-10">
-        <Avatar label={gender} size="lg" />
-        <h1 className="mt-5 text-2xl font-bold text-ink">익명의 {gender}</h1>
+        <Avatar label={name} size="lg" />
+        <h1 className="mt-5 text-2xl font-bold text-ink">{name}</h1>
+        <p className="mt-1 text-sm text-ink-soft">{gender}</p>
         <p className="mt-3 max-w-md text-sm leading-relaxed text-ink-soft">
           얼굴이나 숫자보다, 지금까지 남긴 문장으로 천천히 알아가는 사람입니다.
         </p>

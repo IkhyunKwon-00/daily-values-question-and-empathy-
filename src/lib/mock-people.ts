@@ -3,6 +3,8 @@ import { MOCK_HOME_ANSWERS, TODAY_QUESTION } from "@/lib/mock-home";
 
 export type MockThought = {
   id: string;
+  userId: string;
+  authorName: string;
   href: string;
   question: string;
   answer: string;
@@ -18,26 +20,11 @@ export type MockComment = {
   createdAt: string;
 };
 
-const AUTHOR_IDS = {
-  여성: [
-    "10000000-0000-4000-8000-000000000001",
-    "10000000-0000-4000-8000-000000000002",
-    "10000000-0000-4000-8000-000000000003",
-  ],
-  남성: [
-    "20000000-0000-4000-8000-000000000001",
-    "20000000-0000-4000-8000-000000000002",
-    "20000000-0000-4000-8000-000000000003",
-  ],
-  기타: [
-    "30000000-0000-4000-8000-000000000001",
-    "30000000-0000-4000-8000-000000000002",
-  ],
-} as const;
-
 const ALL_THOUGHTS: MockThought[] = [
   ...MOCK_HOME_ANSWERS.map((answer) => ({
     id: answer.id,
+    userId: answer.userId,
+    authorName: answer.authorName,
     href: `/answers/${answer.id}`,
     question: TODAY_QUESTION,
     answer: answer.content,
@@ -47,6 +34,8 @@ const ALL_THOUGHTS: MockThought[] = [
   })),
   ...MOCK_EXPLORE_CARDS.map((card) => ({
     id: card.id,
+    userId: card.userId,
+    authorName: card.authorName,
     href: `/feed/${card.id}`,
     question: card.question,
     answer: card.answer,
@@ -56,23 +45,19 @@ const ALL_THOUGHTS: MockThought[] = [
   })),
 ];
 
-export function getMockAuthorId(id: string, gender: MockThought["gender"]) {
-  const sameGender = ALL_THOUGHTS.filter((thought) => thought.gender === gender);
-  const index = sameGender.findIndex((thought) => thought.id === id);
-  const authorIds = AUTHOR_IDS[gender];
-  return authorIds[(index < 0 ? 0 : index) % authorIds.length];
-}
-
 export function getMockAuthorThoughts(authorId: string) {
-  return ALL_THOUGHTS.filter(
-    (thought) => getMockAuthorId(thought.id, thought.gender) === authorId,
-  );
+  return ALL_THOUGHTS.filter((thought) => thought.userId === authorId);
 }
 
 export function getMockAuthor(authorId: string) {
   const thoughts = getMockAuthorThoughts(authorId);
   if (thoughts.length === 0) return null;
-  return { id: authorId, gender: thoughts[0].gender, thoughts };
+  return {
+    id: authorId,
+    name: thoughts[0].authorName,
+    gender: thoughts[0].gender,
+    thoughts,
+  };
 }
 
 export function getMockComments(answerId: string): MockComment[] {

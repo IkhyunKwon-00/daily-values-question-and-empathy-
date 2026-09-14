@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import AnswerDetail from "@/components/home/AnswerDetail";
 import { getMockHomeAnswer, MOCK_HOME_ANSWERS } from "@/lib/mock-home";
 import {
-  getMockAuthorId,
   getMockAuthorThoughts,
   getMockComments,
   hasMutualInterest,
@@ -19,7 +18,7 @@ export default function AnswerDetailPage({
 }) {
   const answer = getMockHomeAnswer(params.answerId);
   if (!answer) notFound();
-  const authorId = getMockAuthorId(answer.id, answer.gender);
+  const authorId = answer.userId;
   const otherThoughts = getMockAuthorThoughts(authorId).filter(
     (thought) => thought.id !== answer.id,
   );
