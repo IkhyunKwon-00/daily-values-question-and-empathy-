@@ -55,10 +55,10 @@ export default function MessageThread({
               className={`flex flex-col ${m.mine ? "items-end" : "items-start"}`}
             >
               <div
-                className={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-[15px] leading-relaxed ${
+                className={`max-w-[85%] break-words whitespace-pre-wrap rounded-lg px-4 py-3 text-[15px] leading-relaxed ${
                   m.mine
-                    ? "bg-ember text-black"
-                    : "border border-line bg-paper-card text-ink"
+                    ? "bg-paper-raise text-ink"
+                    : "border border-line/70 bg-paper-card text-ink"
                 }`}
               >
                 {m.body}

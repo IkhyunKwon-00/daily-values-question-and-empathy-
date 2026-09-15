@@ -152,7 +152,7 @@ export default function DesignSystemShowcase() {
               title="나의 기록"
               description="얼굴을 드러내지 않고 차곡차곡 모은 생각들"
               avatarLabel="나"
-              meta="답변 12개"
+              meta="생각으로 알아가는 프로필"
               action={<IconButton label="프로필 메뉴" icon={<MoreHorizontal />} />}
             />
           </ComponentSection>

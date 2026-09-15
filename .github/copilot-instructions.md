@@ -106,7 +106,7 @@ scripts/
 - **타입:** TypeScript strict. `any` 지양. 공유 타입/상수는 `src/lib/types.ts`.
 - **커밋 전:** `npm run lint`와 `npm run build`가 통과해야 한다.
 - **마이그레이션:** `supabase/migrations/NNNN_*.sql` 번호를 순서대로. 새 파일은 다음 번호를 이어서.
-- **검증은 한 곳에서만 늘리지 말 것:** 답변 길이 규칙(100~500자)은 `types.ts` 상수
+- **검증은 한 곳에서만 늘리지 말 것:** 답변 길이 규칙(1~500자)은 `types.ts` 상수
   (`ANSWER_MIN_LENGTH`/`ANSWER_MAX_LENGTH`)와 DB `check` 제약 **양쪽**에 있다. 값을 바꾸면 둘 다 맞춰라.
 - **중복 답변:** `answers`는 `(user_id, question_id)` unique. 서버 액션은 Postgres 에러
   코드 `23505`를 "이미 답변함"으로 처리한다.

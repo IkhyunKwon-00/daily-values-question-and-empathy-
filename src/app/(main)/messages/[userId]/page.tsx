@@ -21,7 +21,7 @@ export default async function ThreadPage({
   return (
     <div className="space-y-3">
       <header className="flex items-center gap-3 px-1">
-        <Link href="/messages" className="text-ink-soft hover:text-ink" aria-label="뒤로">
+        <Link href="/messages" className="grid h-11 w-11 place-items-center rounded-lg text-ink-soft hover:bg-white/[0.05] hover:text-ink" aria-label="뒤로">
           ‹
         </Link>
         <span className="grid h-9 w-9 place-items-center rounded-full bg-line/60 font-mono text-xs text-ink-soft">

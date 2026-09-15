@@ -12,13 +12,13 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: "bg-clay text-paper hover:bg-[#F6D469] shadow-pop",
-  secondary: "bg-paper-raise text-ink hover:bg-[#292925]",
+  primary: "bg-clay text-paper hover:bg-clay-deep",
+  secondary: "bg-paper-raise text-ink hover:bg-line",
   ghost: "bg-transparent text-ink-soft hover:bg-white/[0.05] hover:text-ink",
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
-  sm: "h-9 px-3.5 text-xs",
+  sm: "h-11 px-3.5 text-xs",
   md: "h-11 px-5 text-sm",
   lg: "h-12 px-6 text-[15px]",
 };
@@ -40,7 +40,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
       ref={ref}
       disabled={disabled || loading}
       className={cn(
-        "inline-flex shrink-0 items-center justify-center gap-2 rounded-lg font-semibold transition duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100",
+        "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-lg font-semibold transition duration-200 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-45 disabled:active:scale-100",
         variantStyles[variant],
         sizeStyles[size],
         className,

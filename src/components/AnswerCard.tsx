@@ -67,9 +67,9 @@ export default function AnswerCard({ answer }: { answer: FeedAnswer }) {
           onClick={onLike}
           disabled={pending}
           aria-pressed={liked}
-          className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition active:scale-95 ${
+          className={`inline-flex min-h-11 items-center gap-1.5 rounded-lg px-4 py-2 text-sm font-semibold transition active:scale-95 ${
             liked
-              ? "bg-ember text-black shadow-pop"
+              ? "bg-clay text-paper"
               : "border border-line text-ink-soft hover:bg-white/5"
           }`}
         >

@@ -9,14 +9,14 @@ export type IconButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const sizeStyles = {
-  sm: "h-8 w-8 [&_svg]:h-4 [&_svg]:w-4",
-  md: "h-10 w-10 [&_svg]:h-5 [&_svg]:w-5",
+  sm: "h-11 w-11 [&_svg]:h-4 [&_svg]:w-4",
+  md: "h-11 w-11 [&_svg]:h-5 [&_svg]:w-5",
   lg: "h-12 w-12 [&_svg]:h-6 [&_svg]:w-6",
 };
 
 const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
   function IconButton(
-    { className, label, icon, active = false, size = "md", ...props },
+    { className, label, icon, active, size = "md", ...props },
     ref,
   ) {
     return (

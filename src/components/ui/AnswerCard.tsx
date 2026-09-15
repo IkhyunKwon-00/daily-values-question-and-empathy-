@@ -19,7 +19,7 @@ export default function AnswerCard({
 }: AnswerCardProps) {
   return (
     <article
-      className={cn("rounded-lg bg-paper-card px-5 py-5 shadow-soft sm:px-6", className)}
+      className={cn("rounded-lg bg-paper-card px-5 py-5 sm:px-6", className)}
       {...props}
     >
       <header className="mb-5 flex items-center gap-3">

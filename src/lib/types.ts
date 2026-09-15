@@ -1,4 +1,4 @@
-export const ANSWER_MIN_LENGTH = 100;
+export const ANSWER_MIN_LENGTH = 1;
 export const ANSWER_MAX_LENGTH = 500;
 
 export type Gender = "male" | "female" | "other";

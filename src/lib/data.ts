@@ -23,8 +23,8 @@ function pickGender(p: ProfileJoin): Gender | null {
 // ---- Preview mock data (used only when PREVIEW_MODE is on) ------------------
 const DEMO_QUESTION: Question = {
   id: "demo-question",
-  text: "사랑이란 뭔가요?",
-  category: "사랑",
+  text: "최근에 나를 가장 많이 웃게 한 건 뭐예요?",
+  category: "일상",
   publish_date: todayKey(),
 };
 

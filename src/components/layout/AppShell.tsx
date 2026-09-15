@@ -10,7 +10,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       <div className="lg:pl-64">
         <AppHeader />
 
-        <main className="mx-auto w-full max-w-2xl px-5 pb-28 pt-6 sm:px-8 sm:pt-8 lg:pb-16">
+        <main className="mx-auto w-full max-w-2xl animate-fade-up px-5 pb-28 pt-6 motion-reduce:animate-none sm:px-8 sm:pt-8 lg:pb-16">
           {children}
         </main>
       </div>

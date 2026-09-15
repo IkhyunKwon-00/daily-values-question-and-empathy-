@@ -25,7 +25,7 @@ export default async function MessagesPage() {
               <li key={c.partner_id}>
                 <Link
                   href={`/messages/${c.partner_id}`}
-                  className="card flex items-center gap-3 p-4 transition-transform hover:-translate-y-0.5"
+                  className="card flex items-center gap-3 p-4 transition-colors hover:bg-paper-raise"
                 >
                   <span className="relative grid h-11 w-11 place-items-center rounded-full bg-line/60 font-mono text-sm text-ink-soft">
                     {label[0]}

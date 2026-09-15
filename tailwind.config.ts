@@ -8,18 +8,18 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paper: "#111111",
+        paper: "#111110",
         "paper-card": "#191918",
-        "paper-raise": "#252522",
-        ink: "#F4F1E8",
-        "ink-soft": "#9D9A91",
-        line: "#302F2A",
-        clay: "#F2C94C",
-        "clay-deep": "#D7AE32",
-        sage: "#D9C978",
-        rose: "#E6A78D",
-        amber: "#F2C94C",
-        indigo: "#9D9A91",
+        "paper-raise": "#24231F",
+        ink: "#F3F0E7",
+        "ink-soft": "#A29F96",
+        line: "#34322C",
+        clay: "#E8BD4A",
+        "clay-deep": "#D5A936",
+        sage: "#C8C09A",
+        rose: "#D99A86",
+        amber: "#E8BD4A",
+        indigo: "#A29F96",
       },
       fontFamily: {
         voice: ["var(--font-voice)", "serif"],
@@ -32,9 +32,9 @@ const config: Config = {
           "linear-gradient(135deg,#F6D967 0%,#F2C94C 58%,#D7AE32 100%)",
       },
       boxShadow: {
-        soft: "0 1px 3px rgba(0,0,0,0.4)",
-        card: "0 1px 2px rgba(0,0,0,0.4), 0 12px 30px rgba(0,0,0,0.5)",
-        pop: "0 8px 24px rgba(245,197,24,0.28)",
+        soft: "0 1px 2px rgba(0,0,0,0.24)",
+        card: "0 10px 28px rgba(0,0,0,0.28)",
+        pop: "0 4px 14px rgba(232,189,74,0.18)",
       },
       borderRadius: {
         xl2: "0.5rem",
@@ -43,7 +43,7 @@ const config: Config = {
       keyframes: {
         pop: {
           "0%": { transform: "scale(1)" },
-          "45%": { transform: "scale(1.28)" },
+          "45%": { transform: "scale(1.12)" },
           "100%": { transform: "scale(1)" },
         },
         "fade-up": {
@@ -52,8 +52,8 @@ const config: Config = {
         },
       },
       animation: {
-        pop: "pop 260ms ease-out",
-        "fade-up": "fade-up 220ms ease-out both",
+        pop: "pop 180ms ease-out",
+        "fade-up": "fade-up 180ms ease-out both",
       },
     },
   },

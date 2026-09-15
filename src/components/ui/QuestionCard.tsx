@@ -18,14 +18,14 @@ export default function QuestionCard({
   return (
     <section
       className={cn(
-        "relative overflow-hidden rounded-lg bg-paper-card px-4 py-4 shadow-soft sm:px-5 sm:py-5",
+        "relative overflow-hidden rounded-lg bg-paper-card px-4 py-4 sm:px-5 sm:py-5",
         className,
       )}
       {...props}
     >
-      <span className="absolute inset-x-0 top-0 h-0.5 bg-clay" aria-hidden />
+      <span className="absolute inset-x-0 top-0 h-px bg-line" aria-hidden />
       <div className="mb-3 flex items-center gap-2">
-        <Tag tone="accent">{eyebrow}</Tag>
+        <Tag>{eyebrow}</Tag>
       </div>
       <h2 className="max-w-[34ch] font-voice text-[clamp(1.05rem,3vw,1.35rem)] font-bold leading-[1.5] text-ink">
         {question}

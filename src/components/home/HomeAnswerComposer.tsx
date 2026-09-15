@@ -11,8 +11,7 @@ import {
   WRITE_DRAFT_KEY,
   type PublishedMockAnswer,
 } from "@/lib/mock-storage";
-
-const MAX_LENGTH = 500;
+import { ANSWER_MAX_LENGTH } from "@/lib/types";
 
 type Phase = "closed" | "write" | "preview" | "published";
 
@@ -47,7 +46,7 @@ export default function HomeAnswerComposer() {
   const canContinue = answer.trim().length > 0;
 
   function updateAnswer(value: string) {
-    setAnswer(Array.from(value).slice(0, MAX_LENGTH).join(""));
+    setAnswer(Array.from(value).slice(0, ANSWER_MAX_LENGTH).join(""));
   }
 
   function publish() {
@@ -64,7 +63,7 @@ export default function HomeAnswerComposer() {
     return (
       <Button className="!shadow-none" size="lg" onClick={() => setPhase("write")}>
         <PenLine className="h-4 w-4" />
-        오늘의 질문에 답하기
+        나도 답해보기
       </Button>
     );
   }
@@ -97,8 +96,8 @@ export default function HomeAnswerComposer() {
 
   if (phase === "preview") {
     return (
-      <div className="rounded-lg bg-paper-card p-5 shadow-card animate-fade-up sm:p-6">
-        <p className="text-xs font-semibold uppercase text-clay">Preview</p>
+      <div className="rounded-lg bg-paper-card p-5 shadow-soft animate-fade-up sm:p-6">
+        <p className="text-xs font-semibold uppercase text-ink-soft">Preview</p>
         <p className="mt-4 font-voice text-xl font-bold leading-[1.55] text-ink">
           {TODAY_QUESTION}
         </p>
@@ -121,7 +120,7 @@ export default function HomeAnswerComposer() {
 
   return (
     <form
-      className="rounded-lg bg-paper-card p-5 shadow-card animate-fade-up sm:p-6"
+      className="rounded-lg bg-paper-card p-5 shadow-soft animate-fade-up sm:p-6"
       onSubmit={(event) => {
         event.preventDefault();
         if (canContinue) setPhase("preview");
@@ -132,7 +131,7 @@ export default function HomeAnswerComposer() {
           나의 오늘 생각
         </label>
         <span className={cn("text-xs text-ink-soft", count >= 450 && "text-clay")}>
-          {count} / {MAX_LENGTH}
+          {count} / {ANSWER_MAX_LENGTH}
         </span>
       </div>
       <textarea

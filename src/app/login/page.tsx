@@ -92,7 +92,7 @@ export default function LoginPage() {
       </header>
 
       <form onSubmit={onSubmit} className="card space-y-4 p-6">
-        <div className="flex rounded-full border border-line p-1 text-sm">
+        <div className="flex rounded-lg border border-line p-1 text-sm">
           {(["login", "signup"] as Mode[]).map((m) => (
             <button
               key={m}
@@ -102,7 +102,7 @@ export default function LoginPage() {
                 setError(null);
                 setNotice(null);
               }}
-              className={`flex-1 rounded-full py-1.5 transition-colors ${
+              className={`min-h-11 flex-1 rounded-md px-3 py-2 transition-colors ${
                 mode === m ? "bg-ink text-paper-card" : "text-ink-soft"
               }`}
             >
@@ -147,7 +147,7 @@ export default function LoginPage() {
                   key={g}
                   type="button"
                   onClick={() => setGender(g)}
-                  className={`flex-1 rounded-full border py-2 text-sm transition-colors ${
+                  className={`min-h-11 flex-1 rounded-lg border px-2 py-2 text-sm transition-colors ${
                     gender === g
                       ? "border-clay bg-clay text-paper-card"
                       : "border-line text-ink-soft"
